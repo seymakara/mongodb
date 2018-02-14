@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>All Animals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+<body>
+    <div id="wrapper">
+        <h1>The list of animals:</h1>
+        <button ><a href="/animals/new">Add a new animal</a></button>
+            <% for (animal of animals) { %>
+                <p>Name: <%= animal.name %></p>
+                <a href = "/animals/<%= animal._id %>">Show</a>
+                <a href = "/animals/<%= animal._id %>/edit">Edit</a>
+                <br><br>
+                <form action = "/animals/<%= animal._id %>/destroy" method = "post">
+                    <input type = "submit" value = "delete">
+                </form>
+                <hr>
+            <% } %>
+    </div>
+</body>
+</html>
