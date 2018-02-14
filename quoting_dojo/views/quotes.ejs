@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quoting Dojo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+<body>
+    <div>
+        <h1>Here are the some awesome quotes!</h1>
+        <% for (quote of quotes) { %>
+            <p><%= quote.quote %></p>
+            <p><%= quote.name %> at <%= moment(quote.createdAt).format('h:mm a MMMM D YYYY') %></p>
+            <hr>
+        <% } %>
+        <button><a href="/">Add quotes!</a></button>
+    </div>
+    
+</body>
+</html>
