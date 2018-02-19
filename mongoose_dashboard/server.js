@@ -10,7 +10,6 @@ app.use(session({secret: 'codingdojorocks'}));
 
 var path = require("path");
 app.use(express.static(path.join(__dirname, "./static")));
-app.use(express.static(path.join(__dirname, "./static")));
 
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
@@ -122,19 +121,6 @@ app.post("/animals/:id/update", function(req, res) {
     });
 })
 
-
-// app.get('/quotes', function(req, res) {
-//     console.log('get req on quotes');
-//     Quote.find({}, function(err, quotes) {
-//         if (err) {
-//             console.log('error getting quotes', err);
-//             res.send(err);
-//         } else {
-//             console.log('successfully got all the quotes');
-//             res.render('quotes', {quotes: quotes, moment: moment});
-//         }
-//     })
-// })
 
 app.listen(8000, function() {
     console.log("Mongoose Dashboard listening on port 8000");
