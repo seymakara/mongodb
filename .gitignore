@@ -1,3 +1,5 @@
 node_modules
 .DS_Store
-
+introToMongodb.rtf
+mongodbCheatSheet.rtfd
+restfulTaskAPI/.vscode/
