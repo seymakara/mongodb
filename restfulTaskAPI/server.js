@@ -10,6 +10,8 @@ app.use(express.static(path.join(__dirname, "./static")));
 
 let mongoose = require('mongoose');
 
+app.use(express.static( __dirname + '/myFirstAngularApp/dist' ));
+
 // ===============================
 
 // ==== NEW MONGOOSE CODE! =======
@@ -61,7 +63,7 @@ app.post('/task', function(req, res){
            res.json({message: "Error", error: err})
         }
         else {
-           res.redirect("/tasks")
+            res.json({message: "Success"})
         }
      })
 })
@@ -74,21 +76,21 @@ app.put('/tasks/:id', function(req, res){
         }
         else {
             console.log('successfully updated the task', task);
-            res.redirect('/tasks');
+            res.json({message: "Success"});
         }
      })
 })
 
 app.delete("/tasks/:id", function(req, res) {
     console.log('initiating removal');
-    Animal.remove({_id: req.params.id},function(err, task) {
+    Task.remove({_id: req.params.id},function(err, task) {
         // if there is an error console.log that something went wrong!
         if(err) {
           console.log("post error ",err);
           res.send(err);
         } else { // else console.log that we did well and then redirect to the root route
           console.log('successfully deleted task',task);
-          res.redirect('/tasks');
+          res.json({message: "Success"});
         }
     });
 })
