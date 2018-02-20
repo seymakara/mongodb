@@ -17,15 +17,23 @@ export class HttpService {
     return this._http.get('/tasks')
   }
 
-  // getOne(){
-  //   let tempObservable = this._http.get('/tasks/5a8747407882609ff205c787');
-  //   tempObservable.subscribe(data => console.log("Got the one!", data));
-  // }
+  addTask(newtask){
+    // let tempObservable = this._http.get('/tasks/5a8747407882609ff205c787');
+    // tempObservable.subscribe(data => console.log("Got the one!", data));
+    return this._http.post('/task', newtask)
+  }
 
-  // delete(){
+  deleteTask(ID){
   //   let tempObservable = this._http.delete('/tasks/5a8747407882609ff205c787');
   //   tempObservable.subscribe(data => console.log("Deleted the one!", data));
-  // }
+  return this._http.delete(`/tasks/${ID}`)
+  }
+
+  //EDIT STEP 5
+  updateTask(updatedTask){
+    return this._http.put(`/tasks/${updatedTask.id}`, updatedTask);
+
+  }
 }
 
 

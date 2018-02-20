@@ -1,23 +1,45 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div id="wrapper" >
+
+  <h1>New Task</h1>
+
+  <form (submit)="onCreateButton()">
+    <p>{{newTask | json}}</p>
+    <label>Task title:
+      <input type="text" name= "newTask.title" [(ngModel)] = "newTask.title" />
+    </label><br><br>
+    <label>Task description:
+      <input type="text" name= "newTask.description" [(ngModel)] = "newTask.description" />
+    </label><br><br>
+    <input type="submit" value="Create Task">
+  </form>
+
   <h1>
-    Restful Tasks API
+    Task List
   </h1>
-  <h1>
-    All the tasks:
-  </h1>
-  <ul>
-    <li *ngFor = "let task of tasks">
-      {{task.title}} - {{task.description}}
-    </li>
-  </ul>
-  <h1>
-    The third task:
-  </h1>
-  <ul>
-    <li *ngIf="tasks.length >= 3">
-      {{tasks[2].title}} - {{tasks[2].description}}
-    </li>
-  </ul>
+
+  <button (click)="onShowHideButton()" >{{ showHide }} all tasks</button>
+
+  <div *ngIf="showTasks">
+    <ul>
+      <li *ngFor = "let task of tasks">{{task.title}} - {{task.description}}
+        <button (click) = "onDeleteButton(task._id)">Delete</button>
+        <!-- EDIT STEP 1 -->
+        <button (click) = "populateEditField(task)">Edit</button> 
+      </li>
+    </ul>
+  </div>
+  
+  <!-- EDIT STEP 3 -->
+  <div  *ngIf="showEdit">
+    <form (submit)= "onEditButton()">
+      <p>{{editTask.title | json}} {{editTask.description | json}}</p>
+      <input type="text" name="editTask.title" [(ngModel)] = "editTask.title">
+      <input type="text" name="editTask.description" [(ngModel)] = "editTask.description">
+      <input type="submit" value="Edit Task">
+    </form>
+  </div>
+
+  
 </div>
 
